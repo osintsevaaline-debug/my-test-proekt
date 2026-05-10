@@ -4,13 +4,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Генератор идей для постов</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-start: #0f172a;
+      --bg-end: #1e293b;
+      --card: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #22d3ee;
+      --accent-soft: rgba(34, 211, 238, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: "Manrope", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(140deg, var(--bg-start), var(--bg-end));
+    }
+
+    .card {
+      width: min(700px, 100%);
+      border-radius: 22px;
+      padding: 28px;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 24px 50px rgba(2, 6, 23, 0.45);
+      backdrop-filter: blur(8px);
+      animation: cardIn 700ms ease-out;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      line-height: 1.2;
+      letter-spacing: 0.3px;
+    }
+
+    .subtitle {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    li {
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: itemIn 500ms ease forwards;
+    }
+
+    li:nth-child(1) { animation-delay: 120ms; }
+    li:nth-child(2) { animation-delay: 240ms; }
+    li:nth-child(3) { animation-delay: 360ms; }
+
+    li:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes itemIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Генератор идей для постов</h1>
-  <ul>
-    <li>5 идейй постов для экспертов</li>
-    <li>3 идеи для сторис на сегодня</li>
-    <li>контент план а неделю</li>
-  </ul>
+  <main class="card">
+    <h1>Генератор идей для постов</h1>
+    <p class="subtitle">Быстрые подсказки для контента на сегодня и на неделю.</p>
+    <ul>
+      <li>5 идей постов для экспертов</li>
+      <li>3 идеи для сторис на сегодня</li>
+      <li>Контент-план на неделю</li>
+    </ul>
+  </main>
 </body>
 </html>
